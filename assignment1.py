@@ -157,8 +157,9 @@ if __name__ == "__main__":
   # Check if the the start date format is correct 
    if not valid_date(start_date):
        usage()
-  # Calculating the end date by using day_iter function from the start date and number of days specified 
+  # Calculating the end date by using day_iter function from the start date and number of days specified | call day_iter function to get end date, save to x(end_date)
    end_date = day_iter(start_date, num)
+  # Print (f'(The end date is {day_of_week(end_date)}, {end_date}.')
    print(f"The end date is {day_of_week(end_date)}, {end_date}.")
 pass
 
