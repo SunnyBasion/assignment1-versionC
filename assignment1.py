@@ -23,12 +23,12 @@ def day_of_week(date: str) -> str:
     # Converting/Splitting the date string into day,month, and year as integers 
     day, month, year = (int(x) for x in date.split('/'))
     days_list = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-    offset = {1:0, 2:3, 3:2, 4:5, 5:0, 6:3, 7:5, 8:1, 9:4, 10:6, 11:2, 12:4}
+    offset_dictionary = {1:0, 2:3, 3:2, 4:5, 5:0, 6:3, 7:5, 8:1, 9:4, 10:6, 11:2, 12:4}
     # Adjusting the year if the month is January or February based on tomohiko sakamoto algorithm
     if month < 3:
         year -= 1
     # Utilizing the alogrithm to calculate the day of the week 
-    num = (year + year//4 - year//100 + year//400 + offset[month] + day) % 7
+    num = (year + year//4 - year//100 + year//400 + offset_dictionary[month] + day) % 7
     return days_list[num]
 
 def leap_year(year: int) -> bool:
