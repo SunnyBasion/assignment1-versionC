@@ -65,13 +65,13 @@ def after(date: str) -> str:
 
     leap_flag = leap_year(year)  # Verify if it's a leap year
 
-    mon_dictionary= {1: 31, 2: 28, 3: 31, 4: 30, 5: 31, 6: 30,
+    month_dictionary= {1: 31, 2: 28, 3: 31, 4: 30, 5: 31, 6: 30,
            7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31}
     # Update the maximum number of days for February if is a leap year
     if mon == 2 and leap_flag:
         mon_max = 29
     else:
-        mon_max = mon_dictionary[mon]
+        mon_max = month_dictionary[mon]
     # If the next day has more than the maximum number of days in the month  
     if day > mon_max:
         mon += 1
@@ -93,20 +93,20 @@ def before(date: str) -> str:
         if year % 100 != 0 or year % 400 == 0: #checking century leap year rule
             leap_flag = True
     # Dictionary defining the maximum number of days in each month 
-    mon_dictionary = {1:31,2:28,3: 31,4: 30,5:31,6:30,
+    month_dictionary = {1:31,2:28,3: 31,4: 30,5:31,6:30,
            7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31}
     # If the month is February and a leap year, set February to have 29 days
     if mon == 2 and leap_flag:
         mon_max = 29
     else:
-        mon_max = mon_dictionary [mon]
+        mon_max = month_dictionary [mon]
     # If the day goes below (less than) 1, adjust to the previous month 
     if day < 1:
         mon -= 1
         if mon < 1:  # If the month is less than January, revert back to December of the previous year
             year -= 1
             mon = 12 #Sets month variable back to decemeber 
-        day = mon_dictionary[mon]  #Gets the maximum days for the new month 
+        day = month_dictionary[mon]  #Gets the maximum days for the new month 
         # If it's February and a leap year, update the day
         if mon == 2 and leap_flag:
             day = 29
